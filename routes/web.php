@@ -16,8 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/help', function () {
-
-    $fromTest = [];
-
-    return view(compact('formTest'));
+    return view('help');
 });
+
+route::get('/customers', 'CustomersController@index');
