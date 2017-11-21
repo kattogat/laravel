@@ -20,3 +20,5 @@ Route::get('/help', function () {
 });
 
 route::get('/customers', 'CustomersController@index');
+
+route::get('/customers/{id}', 'CustomersController@onlyOne');
