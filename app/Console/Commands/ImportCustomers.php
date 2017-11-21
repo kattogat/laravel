@@ -41,7 +41,6 @@ class ImportCustomers extends Command
     {
         $url = $this->argument('url');
 
-        //CURL förfrågan, slänger headern och ger bara innehållet
         $this->info("Initializing curl...");
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, 0);
@@ -62,6 +61,19 @@ class ImportCustomers extends Command
                 $address = new Address();
             $address->fill($customerData['address']);
             $address->save();
+
+            
+
+           // $user = User::with('phone')->find(1);
+
+           // $users = User::all();
+           // $post = Post::find(1);
+           // $post->comments()->where("user_id" = 1);
+           // $post-comments;
+           //foreach ($users as $user) {
+                // $user->phone->phone_number;
+                // $user->comments;
+          // }
 
         }
 

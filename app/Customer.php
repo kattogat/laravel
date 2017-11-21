@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     // Länka modellen till en annan tabell
-    protected $table = 'real_users';
+    protected $table = 'customers';
     
     // Primary key-kolumnen antas vara id
     protected $primaryKey = 'id';
