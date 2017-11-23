@@ -22,3 +22,5 @@ Route::get('/help', function () {
 route::get('/customers', 'CustomersController@index');
 
 route::get('/customers/{id}', 'CustomersController@onlyOne');
+
+route::get('/customers/{id}/address', 'CustomersController@onlyOneAndAdress');

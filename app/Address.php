@@ -34,4 +34,8 @@ class Address extends Model
         "company",
         "country"
     ];
+
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
 }

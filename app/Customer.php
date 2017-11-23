@@ -35,4 +35,8 @@ class Customer extends Model
         "customer_invoice_email",
         "customer_extra_text"
     ];
+
+    public function address() {
+        return $this->hasOne(Address::class);
+    }
 }
