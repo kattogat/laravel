@@ -4,6 +4,40 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Address
+ *
+ * @property int $id
+ * @property int|null $customer_id
+ * @property int|null $customer_address_id
+ * @property string|null $email
+ * @property string|null $firstname
+ * @property string|null $lastname
+ * @property string|null $postcode
+ * @property string|null $street
+ * @property string|null $city
+ * @property string|null $telephone
+ * @property string|null $country_id
+ * @property string|null $address_type
+ * @property string|null $company
+ * @property string|null $country
+ * @property-read \App\Customer|null $customer
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereAddressType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCompany($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCustomerAddressId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCustomerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereFirstname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereLastname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address wherePostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereStreet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereTelephone($value)
+ * @mixin \Eloquent
+ */
 class Address extends Model
 {
     // Länka modellen till en annan tabell

@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use DB;
 use Illuminate\Console\Command;
 use App\Customer;
 use App\Address;
+use App\Company;
 
 class ImportCustomers extends Command
 {
@@ -49,33 +51,46 @@ class ImportCustomers extends Command
         foreach ($response as $customerData) {
             $this->info("Importing customer with id: ".$customerData['id']);
             $customer = Customer::find($customerData['id']);
-            if ($customer == null)
+            if ($customer == null) {
                 $customer = new Customer();
-            $customer->fill($customerData);
-            $customer->save();
+                $customer->fill($customerData);
+                $customer->save();
+            }
 
-            if (!isset($customerData['address']) || !is_array($customerData['address'])) continue;
-            
-            $address = Address::find($customerData['address']['id']);
-            if ($address == null)
-                $address = new Address();
-            $address->fill($customerData['address']);
-            $address->save();
+            if (isset($customerData['address']) && is_array($customerData['address'])) {
+                $address = Address::findOrNew($customerData['address']['id']);
+                $address->fill($customerData['address']);
+                $address->save();
+            }
 
-            
 
-           // $user = User::with('phone')->find(1);
+            $this->info("Importing: ".$customerData['customer_company']);
+            $company = Company::where('customer_company', '=', $customerData['customer_company'])->first();
+            if ($company == null) {
+                $company = new Company();
+                $company->fill($customerData);
+                $company->save();
+            }
 
-           // $users = User::all();
-           // $post = Post::find(1);
-           // $post->comments()->where("user_id" = 1);
-           // $post-comments;
-           //foreach ($users as $user) {
-                // $user->phone->phone_number;
-                // $user->comments;
-          // }
+            DB::table('customers')
+            ->where('customer_company', '=', $company['customer_company'])
+            ->update(['company_id' => $company->id]);
+
+            //SELECT * FROM `companies` WHERE customer_company LIKE 'Overlay AB'
 
         }
+
+
+        // $user = User::with('phone')->find(1);
+
+        // $users = User::all();
+        // $post = Post::find(1);
+        // $post->comments()->where("user_id" = 1);
+        // $post-comments;
+        //foreach ($users as $user) {
+            // $user->phone->phone_number;
+            // $user->comments;
+        // }
 
     }
 }

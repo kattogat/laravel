@@ -22,6 +22,7 @@ class CreateCustomers extends Migration
             $table->integer('customer_activated')->nullable();
             $table->integer('group_id')->nullable();
             $table->string('customer_company', 250)->nullable();
+            $table->integer('company_id')->nullable();
             $table->integer('default_billing')->nullable();
             $table->integer('default_shipping')->nullable();
             $table->integer('is_active')->nullable();
