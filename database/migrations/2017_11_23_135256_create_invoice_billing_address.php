@@ -13,7 +13,7 @@ class CreateInvoiceBillingAddress extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_billing_address', function (Blueprint $table) {
+        Schema::create('invoice_billing_addresses', function (Blueprint $table) {
             $table->integer('id')->nullable();
             $table->integer('customer_id')->nullable();
             $table->integer('customer_address_id')->nullable();
