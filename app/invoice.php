@@ -37,4 +37,20 @@ class invoice extends Model
         "shipping_description",
         "id"
      ];
+
+    public function invoice_shipping_address() {
+        return $this->hasOne(invoice_shipping_address::class);
+    }
+
+    public function invoice_item() {
+        return $this->hasOne(invoice_item::class);
+    }
+
+    public function invoice_billing_address() {
+        return $this->hasOne(invoice_billing_address::class);
+    }
+
+    public function Customer() {
+        return $this->belongsTo(Customer::class);
+    }
 }

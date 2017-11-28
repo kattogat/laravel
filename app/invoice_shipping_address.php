@@ -34,4 +34,8 @@ class invoice_shipping_address extends Model
         "company",
         "country"
     ];
+
+    public function invoice() {
+        return $this->belongsTo(invoice::class);
+    }
 }

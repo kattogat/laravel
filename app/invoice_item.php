@@ -35,4 +35,8 @@ class invoice_item extends Model
         "tax_percent",
         "amount_package"
     ];
+
+    public function invoice() {
+        return $this->belongsTo(invoice::class);
+    }
 }
