@@ -20,7 +20,7 @@ class CreateInvoiceItems extends Migration
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->string('name', 300)->nullable();
-            $table->integer('sku')->nullable();
+            $table->string('sku', 500)->nullable();
             $table->integer('qty')->nullable();
             $table->decimal('price')->nullable();
             $table->decimal('tax_amount')->nullable();
