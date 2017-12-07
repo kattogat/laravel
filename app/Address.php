@@ -41,7 +41,7 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     // Länka modellen till en annan tabell
-    protected $table = 'address';
+    protected $table = 'addresses';
     
     // Primary key-kolumnen antas vara id
     protected $primaryKey = 'id';

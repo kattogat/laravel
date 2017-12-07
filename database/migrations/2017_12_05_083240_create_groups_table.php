@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanies extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCompanies extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('customer_company', 250)->nullable();
+        Schema::create('groups', function (Blueprint $table) {
+            $table->integer('customer_group_id')->nullable();
+            $table->string('customer_group_code', 400)->nullable();
+            $table->integer('tax_class_id')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateCompanies extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('groups');
     }
 }

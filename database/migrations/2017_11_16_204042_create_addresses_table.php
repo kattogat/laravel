@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvoiceBillingAddress extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInvoiceBillingAddress extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_billing_addresses', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->integer('id')->nullable();
             $table->integer('customer_id')->nullable();
             $table->integer('customer_address_id')->nullable();
@@ -21,12 +21,12 @@ class CreateInvoiceBillingAddress extends Migration
             $table->string('firstname', 250)->nullable();
             $table->string('lastname', 250)->nullable();
             $table->string('postcode', 100)->nullable();
-            $table->string('street', 300)->nullable();
+            $table->string('street', 250)->nullable();
             $table->string('city', 300)->nullable();
             $table->string('telephone', 250)->nullable();
-            $table->string('country_id', 100)->nullable();
+            $table->string('country_id', 10)->nullable();
             $table->string('address_type', 100)->nullable();
-            $table->string('company', 300)->nullable();
+            $table->string('company', 250)->nullable();
             $table->string('country', 250)->nullable();
         });
     }
@@ -38,6 +38,6 @@ class CreateInvoiceBillingAddress extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_billing_address');
+        Schema::dropIfExists('addresses');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvoiceItems extends Migration
+class CreateInvoiceItemsTable extends Migration
 {
     /**
      * Run the migrations.
