@@ -27,4 +27,6 @@ route::get('/customers/{id}/address', 'CustomersController@onlyOneAndAdress');
 
 route::get('/customers/by-company/{company_id}', 'CustomersController@customersByCompany');
 
-route::get('/products', 'ProductsController@index');
+route::resource('/products', 'ProductsController');
+
+route::resource('/groups', 'GroupsController');

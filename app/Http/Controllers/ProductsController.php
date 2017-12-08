@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
+use App\Product;
+use Resources\Views\Products\Products;
 
 class ProductsController extends Controller
 {
@@ -13,7 +16,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+
+        $products = Product::all(); 
+        return View('products/products', ['products' => $products]);
     }
 
     /**
@@ -23,7 +28,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return View('products/create');
     }
 
     /**
@@ -34,7 +39,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+        //$product->entity_id = $request->entity_id;
+        //$product->name = $request->name;
+        $product->fill($request->all());
+        $product->save();
+        return redirect('/products');
+
     }
 
     /**
@@ -45,7 +56,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id); 
+        return View('products/show', ['product' => $product]);
     }
 
     /**
@@ -56,7 +68,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productEdit = Product::find($id);
+        return View('products/edit', ['productEdit' => $productEdit]);
     }
 
     /**
@@ -68,7 +81,11 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $product = Product::find($id);
+        $product->fill($input)->save();
+        return redirect('/products');
+
     }
 
     /**
@@ -79,6 +96,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $goodBye = Product::find($id);
+        $goodBye->delete();
+        return redirect('/products');
     }
 }

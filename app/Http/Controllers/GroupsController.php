@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
+use App\Group;
+use Resources\Views\Groups\Groups;
 
 class GroupsController extends Controller
 {
@@ -13,7 +16,9 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        //
+
+        $groups = Group::all(); 
+        return View('groups/groups', ['groups' => $groups]);
     }
 
     /**
@@ -23,7 +28,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        return View('groups/create');
     }
 
     /**
@@ -34,7 +39,13 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = new Group;
+        //$group->entity_id = $request->entity_id;
+        //$group->name = $request->name;
+        $group->fill($request->all());
+        $group->save();
+        return redirect('/groups');
+
     }
 
     /**
@@ -45,7 +56,8 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = Group::find($id); 
+        return View('groups/show', ['group' => $group]);
     }
 
     /**
@@ -56,7 +68,8 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $groupEdit = Group::find($id);
+        return View('groups/edit', ['groupEdit' => $groupEdit]);
     }
 
     /**
@@ -68,7 +81,11 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $group = Group::find($id);
+        $group->fill($input)->save();
+        return redirect('/groups');
+
     }
 
     /**
@@ -79,6 +96,8 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $goodBye = Group::find($id);
+        $goodBye->delete();
+        return redirect('/groups');
     }
 }
