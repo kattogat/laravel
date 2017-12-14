@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class invoice extends Model
+class Invoice extends Model
 {
      // Länka modellen till en annan tabell
      protected $table = 'invoices';
@@ -48,6 +48,7 @@ class invoice extends Model
 
     public function invoice_billing_address() {
         return $this->hasOne(invoice_billing_address::class);
+        //return $this->hasOne(Address::class, billing_address_id, id);
     }
 
     public function Customer() {

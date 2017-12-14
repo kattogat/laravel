@@ -4,12 +4,12 @@ namespace App\Console\Commands;
 
 use DB;
 use Illuminate\Console\Command;
-use App\invoice;
-use App\invoice_shipping_address;
-use App\invoice_item;
-use App\invoice_billing_address;
+use App\Invoice;
+use App\Invoice_shipping_address;
+use App\Invoice_item;
+use App\Invoice_billing_address;
 
-class importInvoice extends Command
+class ImportInvoice extends Command
 {
     /**
      * The name and signature of the console command.

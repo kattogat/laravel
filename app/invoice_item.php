@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class invoice_item extends Model
+class Invoice_item extends Model
 {
     // Länka modellen till en annan tabell
     protected $table = 'invoice_items';

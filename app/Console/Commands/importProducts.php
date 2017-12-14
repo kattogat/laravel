@@ -9,7 +9,7 @@ use App\Product;
 use App\Group;
 use App\Group_price;
 
-class importProducts extends Command
+class ImportProducts extends Command
 {
     /**
      * The name and signature of the console command.
@@ -57,8 +57,11 @@ class importProducts extends Command
 
             foreach ($productData['group_prices'] as $group_price_data) {
                 $group_price = Group_price::findOrNew($group_price_data['price_id']);
+                $group_price['product_id'] = $product['entity_id'];
                 $group_price->fill($group_price_data);
                 $group_price->save();
+
+                
             }
         }
 

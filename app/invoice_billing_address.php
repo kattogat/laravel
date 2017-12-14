@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class invoice_billing_address extends Model
+class Invoice_billing_address extends Model
 {
     // Länka modellen till en annan tabell
     protected $table = 'invoice_billing_addresses';
