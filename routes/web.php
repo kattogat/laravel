@@ -30,3 +30,11 @@ route::get('/customers/by-company/{company_id}', 'CustomersController@customersB
 route::resource('/products', 'ProductsController');
 
 route::resource('/groups', 'GroupsController');
+
+Route::get('/klarna', 'KlarnaController@index');
+
+Route::get('/confirmation', 'KlarnaController@confirmation');
+
+Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
+
+Route::get('/insta', 'InstaController@index');
