@@ -25,18 +25,15 @@ class Tweet extends Model
     static public function countWords ($all) { 
         $tweets = $all->pluck('text');
         $string = json_encode($tweets);
-        //$naked = preg_replace("/[^a-zA-Z0-9\s]/", "", $string);
+        $string = substr($string, 2);
+        $string = substr($string, 0, -2);
         $arr = explode(" ", $string);
         $words = array_unique($arr);
 
-        function countWords($text, $words) {
-            foreach ($words as $word) {
-            
-                $count = substr_count($text, $word);
-                echo "Det finns " . $count . " utav " . $word . "<br>";
-            }
+        foreach ($words as $word) {
+        
+            $count = substr_count($string, $word);
+            echo "Det finns " . $count . " utav " . $word . "<br>";
         }
-
-        echo countWords($string, $words);
     }
 }

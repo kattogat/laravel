@@ -38,3 +38,5 @@ Route::get('/confirmation', 'KlarnaController@confirmation');
 Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
 
 Route::get('/insta', 'InstaController@index');
+
+Route::get('/twitter', 'TwitterController@countWordsInTweets');
