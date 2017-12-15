@@ -12,4 +12,15 @@ class TwitterController extends Controller
         echo Tweet::countWords($tweets);
         //return View('twitter/index', ['tweets' => $send]);
     }
+
+    public function searchTweets() {
+        return View('twitter/index');
+    }
+
+    public function countWordsInTweetsAndSort(Request $request) {
+        $ThemTweets = Tweet::getTweets($request->twittertoken, $request->word);
+        $countedAndSorted = Tweet::countAndSort($ThemTweets);
+
+        return View('twitter/show', ['words' => $countedAndSorted]);
+    }
 }

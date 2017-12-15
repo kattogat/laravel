@@ -39,4 +39,8 @@ Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
 
 Route::get('/insta', 'InstaController@index');
 
-Route::get('/twitter', 'TwitterController@countWordsInTweets');
+Route::get('/twitter/count', 'TwitterController@countWordsInTweets');
+
+Route::post('/twitter/count-words', 'TwitterController@countWordsInTweetsAndSort');
+
+Route::get('/twitter', 'TwitterController@searchTweets');

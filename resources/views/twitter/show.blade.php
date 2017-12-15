@@ -21,14 +21,21 @@
                 </div>
             @endif
 
-        <form action="{{ action('TwitterController@countWordsInTweetsAndSort') }}" method="post">
-            {{ csrf_field() }}
-            <label>Your twitter token</label>
-            <input name="twittertoken" type="text">
-            <label>Search for this</label>
-            <input name="word" type="text">
-
-            <input name="submit" type="submit" value="Search!">
-        </form>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Word</td>
+                        <td>Count</td>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($words as $word => $number)
+                    <tr>
+                        <td>{{ $word }}</td>
+                        <td>{{ $number }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </body>
 </html>

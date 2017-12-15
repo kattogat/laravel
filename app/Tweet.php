@@ -44,4 +44,48 @@ class Tweet extends Model
             echo "Det finns <b>" . $count . "</b> utav <b>" . $word . "</b><br>";
         }
     }
+
+    static public function getTweets ($token, $word) {
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.twitter.com/1.1/search/tweets.json?q='.$word'",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "authorization: Bearer ".$token,
+            "cache-control: no-cache",
+            "postman-token: 496a4314-13dd-73af-8191-ba825d1a693d"
+          ),
+        ));
+        
+        $response = json_decode(curl_exec($curl), true);
+
+        $clean = [];
+        foreach ($response['statuses'] as $data) {
+
+            $clean[] = $data['text'];
+        }
+
+        return $clean;
+
+    }
+
+    static public function countAndSort ($tweets) {
+        $superArr = [];
+        foreach ($tweets as $tweet) {
+            $exploded = explode(" ", $tweet);
+            $superArr = array_merge($superArr ,$exploded);
+        }
+
+        $counted = array_count_values($superArr);
+        arsort($counted);
+
+        return $counted;
+
+    }
 }
