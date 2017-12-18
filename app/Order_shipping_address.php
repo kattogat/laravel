@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice_billing_address extends Model
+class Order_shipping_address extends Model
 {
     // Länka modellen till en annan tabell
-    protected $table = 'invoice_billing_addresses';
+    protected $table = 'order_shipping_addresses';
     
     // Primary key-kolumnen antas vara id
     protected $primaryKey = 'id';
@@ -35,7 +35,7 @@ class Invoice_billing_address extends Model
         "country"
     ];
 
-    public function invoice() {
-        return $this->belongsTo(invoice::class);
+    public function order() {
+        return $this->belongsTo(Order::class);
     }
 }

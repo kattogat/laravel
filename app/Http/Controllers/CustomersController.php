@@ -11,7 +11,11 @@ class CustomersController extends Controller
 {
     public function index() {
         return response()->json(Customer::all());
+        //return response()->json(Customer::with(['address'])->get());
     }
+
+    /* ?? - om resultetet är null så blir det det här i stället:
+        return customer::find($id) ?? [mesage => 'Customer not found']; */
 
     public function onlyOne($id) {
         $customer = Customer::find($id);

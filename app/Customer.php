@@ -46,6 +46,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer extends Model
 {
+    //Håll in ctrl och klicka på model namn för att ta sig till model
+
     // Länka modellen till en annan tabell
     protected $table = 'customers';
     
@@ -53,7 +55,7 @@ class Customer extends Model
     protected $primaryKey = 'id';
     
     // Primary key-kolumnen antas vara auto-inkrementerande
-    public $incrementing = true;
+    public $incrementing = false;
 
     // Laravel sköter timestamps åt dig om du inte säger nej
     public $timestamps = false;
@@ -70,8 +72,6 @@ class Customer extends Model
         "default_billing",
         "default_shipping",
         "is_active",
-        "created_at",
-        "updated_at",
         "customer_invoice_email",
         "customer_extra_text"
     ];

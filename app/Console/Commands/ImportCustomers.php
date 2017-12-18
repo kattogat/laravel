@@ -51,6 +51,7 @@ class ImportCustomers extends Command
         foreach ($response as $customerData) {
             $this->info("Importing customer with id: ".$customerData['id']);
             $customer = Customer::find($customerData['id']);
+            //$customer = Customer::findOrNew($id);
             if ($customer == null) {
                 $customer = new Customer();
                 $customer->fill($customerData);

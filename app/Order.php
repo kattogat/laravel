@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
+class Order extends Model
 {
      // Länka modellen till en annan tabell
-     protected $table = 'invoices';
+     protected $table = 'orders';
      
      // Primary key-kolumnen antas vara id
      protected $primaryKey = 'id';
@@ -38,16 +38,16 @@ class Invoice extends Model
         "id"
      ];
 
-    public function invoice_shipping_address() {
-        return $this->hasOne(invoice_shipping_address::class);
+    public function order_shipping_address() {
+        return $this->hasOne(Order_shipping_address::class);
     }
 
-    public function invoice_item() {
-        return $this->hasOne(invoice_item::class);
+    public function order_item() {
+        return $this->hasOne(Order_item::class);
     }
 
-    public function invoice_billing_address() {
-        return $this->hasOne(invoice_billing_address::class);
+    public function order_billing_address() {
+        return $this->hasOne(Order_billing_address::class);
         //return $this->hasOne(Address::class, billing_address_id, id);
     }
 

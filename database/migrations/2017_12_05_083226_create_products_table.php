@@ -14,17 +14,17 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->integer('entity_id')->nullable();
-            $table->integer('entity_type_id')->nullable();
-            $table->integer('attribute_set_id')->nullable();
-            $table->string('type_id', 400)->nullable();
-            $table->string('sku', 400)->nullable();
+            $table->integer('entity_id');
+            $table->integer('entity_type_id');
+            $table->integer('attribute_set_id');
+            $table->string('type_id', 400);
+            $table->string('sku', 400);
             $table->string('has_options', 400)->nullable();
             $table->integer('required_options')->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->integer('status')->nullable();
-            $table->string('name', 400)->nullable();
+            $table->string('name', 400);
             $table->integer('amount_package')->nullable();
             $table->decimal('price')->nullable();
             $table->integer('is_salable')->nullable();

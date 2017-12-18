@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice_item extends Model
+class Order_billing_address extends Model
 {
     // Länka modellen till en annan tabell
-    protected $table = 'invoice_items';
+    protected $table = 'order_billing_addresses';
     
     // Primary key-kolumnen antas vara id
     protected $primaryKey = 'id';
@@ -20,23 +20,22 @@ class Invoice_item extends Model
 
     protected $fillable = [
         "id",
-        "order_id",
-        "item_id",
-        "created_at",
-        "updated_at",
-        "name",
-        "sku",
-        "qty",
-        "price",
-        "tax_amount",
-        "row_total",
-        "price_incl_tax",
-        "total_incl_tax",
-        "tax_percent",
-        "amount_package"
+        "customer_id",
+        "customer_address_id",
+        "email",
+        "firstname",
+        "lastname",
+        "postcode",
+        "street",
+        "city",
+        "telephone",
+        "country_id",
+        "address_type",
+        "company",
+        "country"
     ];
 
-    public function invoice() {
-        return $this->belongsTo(invoice::class);
+    public function order() {
+        return $this->belongsTo(Order::class);
     }
 }

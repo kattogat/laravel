@@ -47,10 +47,10 @@ class Address extends Model
     protected $primaryKey = 'id';
     
     // Primary key-kolumnen antas vara auto-inkrementerande
-    public $incrementing = true;
+    public $incrementing = false;
 
     // Laravel sköter timestamps åt dig om du inte säger nej
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         "id",

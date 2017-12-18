@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvoiceItemsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateInvoiceItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_items', function (Blueprint $table) {
-            $table->integer('id')->nullable();
-            $table->integer('order_id')->nullable();
-            $table->integer('item_id')->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->string('name', 300)->nullable();
-            $table->string('sku', 500)->nullable();
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('order_id');
+            $table->integer('item_id');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+            $table->string('name', 300);
+            $table->string('sku', 500);
             $table->integer('qty')->nullable();
             $table->decimal('price')->nullable();
             $table->decimal('tax_amount')->nullable();
@@ -39,6 +39,6 @@ class CreateInvoiceItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_items');
+        Schema::dropIfExists('order_items');
     }
 }

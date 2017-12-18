@@ -14,9 +14,9 @@ class CreateGroupsTable extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-            $table->integer('customer_group_id')->nullable();
-            $table->string('customer_group_code', 400)->nullable();
-            $table->integer('tax_class_id')->nullable();
+            $table->integer('customer_group_id');
+            $table->string('customer_group_code', 400);
+            $table->integer('tax_class_id');
         });
     }
 
