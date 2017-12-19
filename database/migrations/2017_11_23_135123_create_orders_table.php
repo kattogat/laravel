@@ -31,6 +31,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('shipping_tax_amount')->nullable();
             $table->string('shipping_description', 400)->nullable();
             $table->integer('id');
+            $table->integer('invoice_id')->nullable(); //-index();
         });
     }
 
