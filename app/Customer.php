@@ -80,7 +80,11 @@ class Customer extends Model
         return $this->hasOne(Address::class);
     }
 
-    public function invoices() {
-        return $this->hasMany(invoice::class);
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function invoice() {
+        return $this->hasMany(Invoice::class);
     }
 }

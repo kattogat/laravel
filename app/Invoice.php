@@ -23,4 +23,12 @@ class Invoice extends Model
         "total_price",
         "billing_status"
      ];
+
+     public function order() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function Customer() {
+        return $this->belongsTo(Customer::class);
+    }
 }

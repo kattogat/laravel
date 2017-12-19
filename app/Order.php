@@ -48,10 +48,13 @@ class Order extends Model
 
     public function order_billing_address() {
         return $this->hasOne(Order_billing_address::class);
-        //return $this->hasOne(Address::class, billing_address_id, id);
     }
 
     public function Customer() {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function Invoice() {
+        return $this->belongsTo(Invoice::class);
     }
 }
